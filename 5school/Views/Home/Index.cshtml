@@ -1,0 +1,68 @@
+﻿@using _5school.BLL.ViewModels;
+
+@model List<StreamVM>
+<div class="container">
+    <div class="single-item">
+        <img src="~/Images/IMG_0025.JPG" class="img-fluid main-img" />
+        <img src="~/Images/IMG_0039.JPG" class="img-fluid main-img" />
+        <img src="~/Images/IMG_0049.JPG" class="img-fluid main-img" />
+    </div>
+</div>
+<h2 class="big-text">— @SharedLocalizer["String1"] — </h2>
+
+<div class="container" data-aos="fade-up" data-aos-duration="1500" style="margin-top:2%; box-shadow: 2px 10px 25px 2px #123278; border: 5px solid  #123278 ; border-radius: 35px; padding: 35px;">
+    <p style="color:#707070 ; font-family:Georgia, 'Times New Roman', Times, serif ; font-size:22.4px;">
+        Դպրոցը հիմնադրվել է 1936թ-ին՝ որպես միջնակարգ դպրոց: Երկրորդ հազարամյակի բազմաթիվ հնագիտական հուշարձանների մեջ 1948թ.-ին Ղարաքիլիսայում՝ Քիմշենի՝ ներկայիս Վանաձորի թիվ 5 ավագ դպրոցի նոր մասնաշենքի հիմքը փորելու ժամանակ հայտնաբերվեց մեծ կուրգան՝ դամբարան, որը ուսումնասիրվեց ՍՍՌ ակադեմիկոս Բ.Բ. Պիտրովսկու կողմից: Ղարաքիլիսայի մեծ դամբարանի 4 պատերի տակ դրված էին նկարազարդ խեցեղեն անոթներ, ինչպես նաև արծաթե 4 աման և մի ոսկե թաս՝ 3 զույգ առյուծների փորագիր պատկերով: Առյուծների դիրքը գավաթի վրա հերալդիկ է: Այդ ոսկե գավաթը թվագրվում է մ.թ.ա. XVII-XVI դդ.: Այդ պատճառով էլ դպրոցը ժողովրդի կողմից ստացել է «Ոսկե դպրոց» անվանումը, որին դպրոցը երբեք չի դավաճանել և տվել է մեր հայրենիքին և մարդկությանը պիտանի բազմաթիվ շրջանավարտներ:2009 թ-ից դպրոցը ՀՀ կառավարության որոշմամբ դարձել է ավագ դպրոց:Մի շարք ուսուցիչներ տարբեր տարիներին դարձել են «Տարվա լավագույն ուսուցիչ» մրցույթի հաղթողներ:
+    </p>
+</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1500" style="border:5px solid #123278; border-radius: 35px; padding: 35px; color:#707070 ; box-shadow: 2px 10px 25px 2px #123278; ">
+            <p style="color: #707070; text-align: center; font-family:Georgia, 'Times New Roman', Times, serif ; font-size: 22.4px;">
+                Հիմնը<br>
+                Իմ դպրոց
+
+                <br><br>
+                Ասես ոսկեձույլ դու մեր սուրբ դպրոց,<br>
+                Կենսախինդ մանկանց լույսի մեծ դարբնոց,<br>
+                Ուր էլ որ լինենք քեզ չենք մոռանա,<br>
+                Սերդ մեր սրտում հավերժ կմնա:<br>
+                ԿՐԿ.- Գարնան շնչով ես դու արբել,<br>
+                Դարձել մանկանց մի ծով,<br>
+                Թվում է աշխարհն ես լցրել<br>
+                Մեծ Տերյանի շնչով:<br>
+                Ուսուցիչներդ սիրով ջերմագին<br>
+                Ջահդ մշտավառ առաջ են տանում,<br>
+                Մեծն Մաշտոցի լույսով առլեցուն<br>
+                Մանկանց արևշող բարձրունքներ հանում:<br>
+                Տես քո բանիմաց խուհուն սաներին,<br>
+                Գիտության լույսի տաճար են մտնում,<br>
+                Քո հշաշք գրկում, դպրոց իմ անգին,<br>
+                Գալիք լուսավոր ճամփան են գտնում:<br>
+                <br>
+                Խոսք՝ Վալտեր Թորոսյանի<br>
+                Երաժշ. Գյուլնարա Դերձյանի<br>
+            </p>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1500">
+            <img src="~/Images/IMG_0018.JPG" class="img-fluid main-img" />
+            <img src="~/Images/IMG_0028.JPG" class="img-fluid main-img" />
+        </div>
+    </div>
+</div>
+
+<h2 class="big-text">— Հոսքեր —</h2>
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-6" data-aos="fade-down" data-aos-duration="1500">
+                <div class="card">
+                    <img src="@item.ImageFile" class="img-fluid card-img" />
+                    <h3 class="big-text">@item.Name</h3>
+                    <button class="btn btn-outline-warning btn-anim">Ավելին</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

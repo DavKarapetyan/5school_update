@@ -1,0 +1,34 @@
+﻿@model RegisterVM
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+<form method="post" asp-action="Register" asp-controller="Account">
+    <div class="container mt-3">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label"></label><br />
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="DOB" class="form-label">Date of Birth</label><br />
+            <input asp-for="DOB" class="form-control" />
+            <span asp-validation-for="DOB"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label"></label><br />
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PasswordConfirm" class="form-label">Confirm Password</label><br />
+            <input asp-for="PasswordConfirm" class="form-control" />
+            <span asp-validation-for="PasswordConfirm"></span>
+        </div>
+        <input type="submit" value="Submit" class="btn btn-success w-100" />
+    </div>
+</form>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

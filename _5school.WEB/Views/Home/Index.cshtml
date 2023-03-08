@@ -1,0 +1,45 @@
+﻿@using _5school.BLL.ViewModels;
+@model List<StreamVM>
+<div class="container">
+    <div class="single-item">
+        <img src="~/Images/IMG_0025.JPG" class="img-fluid main-img" />
+        <img src="~/Images/IMG_0039.JPG" class="img-fluid main-img" />
+        <img src="~/Images/IMG_0049.JPG" class="img-fluid main-img" />
+    </div>
+</div>
+<h2 class="big-text">— @SharedLocalizer["bigText1"] — </h2>
+
+<div class="container" data-aos="fade-up" data-aos-duration="1500" style="margin-top:2%; box-shadow: 2px 10px 25px 2px #123278; border: 5px solid  #123278 ; border-radius: 35px; padding: 35px;">
+    <p style="color:#707070 ; font-family:Georgia, 'Times New Roman', Times, serif ; font-size:22.4px;">
+        @SharedLocalizer["text1"]
+    </p>
+</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1500" style="border:5px solid #123278; border-radius: 35px; padding: 35px; color:#707070 ; box-shadow: 2px 10px 25px 2px #123278; ">
+            <p style="color: #707070; text-align: center; font-family:Georgia, 'Times New Roman', Times, serif ; font-size: 22.4px;">
+                @SharedLocalizer["text2"]
+            </p>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1500">
+            <img src="~/Images/IMG_0018.JPG" class="img-fluid main-img" />
+            <img src="~/Images/IMG_0028.JPG" class="img-fluid main-img" />
+        </div>
+    </div>
+</div>
+
+<h2 class="big-text">— @SharedLocalizer["text3"] —</h2>
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-6" data-aos="fade-down" data-aos-duration="1500">
+                <div class="card">
+                    <img src="@item.ImageFile" class="img-fluid card-img" />
+                    <h3 class="big-text">@item.Name</h3>
+                    <button class="btn btn-outline-warning btn-anim">@SharedLocalizer["text4"]</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

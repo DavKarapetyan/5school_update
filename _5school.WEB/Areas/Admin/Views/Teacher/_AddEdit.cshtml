@@ -1,0 +1,63 @@
+﻿@using _5school.BLL.ViewModels;
+@using _5school.DAL.Entities;
+@model TeacherAddEditVM
+@{
+    var actionText = Model.Id == 0 ? "Add" : "Edit";
+}
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel1">@actionText</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <form method="post" asp-action="AddEdit" asp-controller="Teacher" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
+        <div class="modal-body">
+            <div class="row">
+                <div class="col mb-3">
+                    <label asp-for="FirstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" placeholder="Enter First Name" asp-for="FirstName">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label asp-for="LastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" placeholder="Enter Last Name" asp-for="LastName">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label asp-for="ImagePath" class="form-label">Image File</label>
+                    <input type="file" class="form-control" placeholder="Enter Image" name="formFile">
+                    @if (Model.ImagePath != null)
+                    {
+                        <img src="@Model.ImagePath" class="img-fluid w-25 mt-3 rounded-lg" />
+                        <input hidden asp-for="ImagePath" />
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label asp-for="GroupId" class="form-label">Group</label>
+                    <select class="form-select" asp-for="GroupId">
+                        <option>Select Group</option>
+                        @foreach (var item in ViewBag.Groups)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label asp-for="Position" class="form-label">Position</label>
+                    <select class="form-select" asp-items="@Html.GetEnumSelectList<Position>()" asp-for="Position">
+                        <option>Select Position</option>
+                    </select>
+                </div>
+            </div>
+            <input asp-for="Culture" hidden />
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</div>

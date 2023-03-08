@@ -1,0 +1,28 @@
+﻿@model LoginVM
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+<form method="post" asp-action="Register" asp-controller="Account">
+    <div class="container mt-3">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label"></label><br />
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label"></label><br />
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="RememberMe" class="form-label">Remember Me</label><br />
+            <input asp-for="RememberMe" type="checkbox" class="form-check-input" />
+        </div>
+        <input type="submit" value="Submit" class="btn btn-success w-100" />
+    </div>
+</form>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

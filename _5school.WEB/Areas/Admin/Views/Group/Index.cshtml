@@ -1,0 +1,42 @@
+﻿@model List<GroupVM>
+@{
+    Layout = "~/Areas/Admin/Views/_AdminLayout.cshtml";
+}
+<div class="content container-fluid">
+    <a class="btn btn-success modal-open" asp-action="AddEdit" asp-controller="Group">Add</a>
+    <table class="table border-0 star-student table-hover table-center mb-0 datatable table-striped dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+        <thead class="student-thread">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr role="row">
+                    <td class="sorting_1">@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>
+                        <a asp-action="Delete" asp-controller="Group" asp-route-id="@item.Id" class="btn btn-danger modal-open" style="color:white;">
+                            <i class="feather-x-square"></i>
+                            Delete
+                        </a>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true" fdprocessedid="zjjg3k">
+                                <i class="feather-edit"></i>
+                                Edit
+                            </button>
+                            <div class="dropdown-menu" style="">
+                                <a class="dropdown-item modal-open" asp-action="AddEdit" asp-route-id="@item.Id" asp-route-culture="@CultureType.en">Edit English</a>
+                                <a class="dropdown-item modal-open" asp-action="AddEdit" asp-route-id="@item.Id" asp-route-culture="@CultureType.am">Edit Armenian</a>
+                                <a class="dropdown-item modal-open" asp-action="AddEdit" asp-route-id="@item.Id" asp-route-culture="@CultureType.ru">Edit Russian</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,252 @@
+.main-img {
+    padding: 5px;
+    border-radius: 35px;
+}
+
+.big-text {
+    color: #FCA311;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.card {
+    border-radius: 35px;
+    border: 5px solid #123278;
+    margin-top: 4%;
+}
+
+.card-img {
+    padding: 40px;
+    max-height: 550px;
+}
+
+.btn-anim {
+    border: none;
+    margin-top: 2%;
+    width: 25%;
+    cursor: pointer;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    margin-bottom: 10px;
+    transform: all 0.3s;
+    position: relative;
+}
+
+    .btn-anim:before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 4px;
+        top: -5px;
+        left: -5px;
+        border-top: 2px solid #ffc107;
+        border-left: 2px solid #ffc107;
+        transition: all 0.25s;
+    }
+
+    .btn-anim:hover:before, button:hover:after {
+        width: 104%;
+        height: 100%;
+    }
+
+    .btn-anim:after {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 4px;
+        bottom: -5px;
+        right: -5px;
+        border-bottom: 2px solid #ffc107;
+        border-right: 2px solid #ffc107;
+        transition: all 0.30s;
+    }
+
+.box {
+    margin-top: 2%;
+    box-shadow: 2px 10px 25px 2px #123278;
+    border: 5px solid #123278;
+    border-radius: 35px;
+    padding: 35px;
+}
+
+.profile-card-img {
+    padding: 20px;
+    border-radius: 35px;
+    height:300px;
+    max-width:300px;
+}
+
+.article-text {
+    padding: 10px;
+    text-align: center;
+    color: #123278;
+    font-size: 18.4px;
+}
+
+.article-main-text {
+    text-align: left;
+    color: #123278;
+    font-size: 22.4px;
+}
+
+.article-card-img {
+    padding: 10px;
+    border-radius: 35px;
+    min-height: 303px;
+}
+
+.article-main-img {
+    border-radius: 35px;
+    border: 5px solid #123278;
+    box-shadow: 2px 10px 25px 2px #123278;
+}
+
+.stream-img {
+    max-height: 420px;
+}
+
+.blue-link {
+    color: #123278;
+}
+.footer {
+    position: relative;
+    width: 100%;
+    background: #3586ff;
+    min-height: 100px;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.social-icon,
+.menu {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    flex-wrap: wrap;
+}
+
+.social-icon__item,
+.menu__item {
+    list-style: none;
+}
+
+.social-icon__link {
+    font-size: 2rem;
+    color: #fff;
+    margin: 0 10px;
+    display: inline-block;
+    transition: 0.5s;
+}
+
+    .social-icon__link:hover {
+        transform: translateY(-10px);
+    }
+
+.menu__link {
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 0 10px;
+    display: inline-block;
+    transition: 0.5s;
+    text-decoration: none;
+    opacity: 0.75;
+    font-weight: 300;
+}
+
+    .menu__link:hover {
+        opacity: 1;
+    }
+
+.footer p {
+    color: #fff;
+    margin: 15px 0 10px 0;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.wave {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url("https://i.ibb.co/wQZVxxk/wave.png");
+    background-size: 1000px 100px;
+}
+
+    .wave#wave1 {
+        z-index: 1000;
+        opacity: 1;
+        bottom: 0;
+        animation: animateWaves 4s linear infinite;
+    }
+
+    .wave#wave2 {
+        z-index: 999;
+        opacity: 0.5;
+        bottom: 10px;
+        animation: animate 4s linear infinite !important;
+    }
+
+    .wave#wave3 {
+        z-index: 1000;
+        opacity: 0.2;
+        bottom: 15px;
+        animation: animateWaves 3s linear infinite;
+    }
+
+    .wave#wave4 {
+        z-index: 999;
+        opacity: 0.7;
+        bottom: 20px;
+        animation: animate 3s linear infinite;
+    }
+
+@keyframes animateWaves {
+    0% {
+        background-position-x: 1000px;
+    }
+
+    100% {
+        background-positon-x: 0px;
+    }
+}
+
+@keyframes animate {
+    0% {
+        background-position-x: -1000px;
+    }
+
+    100% {
+        background-positon-x: 0px;
+    }
+}
+.underline {
+    display: block;
+    position: relative;
+    font-size: 18.4px;
+    color: #123278;
+}
+.underline::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.1em;
+    background-color: #123278;
+    opacity: 0;
+    transition: opacity 300ms, transform 300ms;
+}
+
+.underline:hover::after,
+.underline:focus::after {
+    opacity: 1;
+    transform: translate3d(0, 0.2em, 0);
+}

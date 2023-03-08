@@ -1,0 +1,51 @@
+﻿@using _5school.BLL.ViewModels;
+@using _5school.DAL.Entities;
+@model ArticleVM
+@{
+    var actionText = Model.Id == 0 ? "Add" : "Edit";
+}
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel1">@actionText</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <form method="post" asp-action="AddEdit" asp-controller="Article" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
+        <div class="modal-body">
+            <div class="row">
+                <div class="col mb-3">
+                    <label asp-for="Title" class="form-label">Title</label>
+                    <input type="text" class="form-control" placeholder="Enter title" asp-for="Title">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label asp-for="Description" class="form-label">Description</label>
+                    <textarea class="form-control" placeholder="Enter Description" asp-for="Description"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label asp-for="ArticleType" class="form-label">Article Type</label>
+                    <select asp-for="ArticleType" class="form-control" asp-items="@Html.GetEnumSelectList<ArticleType>()">
+                        <option>Please select Article Type</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label asp-for="ImageFile" class="form-label">Image File</label>
+                    <input type="file" class="form-control" placeholder="Enter Image" name="formFile">
+                    @if (Model.ImageFile != null)
+                    {
+                        <img src="@Model.ImageFile" class="img-fluid w-25 mt-3 rounded-lg" />
+                        <input hidden asp-for="ImageFile" />
+                    }
+                </div>
+            </div>
+            <input asp-for="CultureType" hidden />
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</div>

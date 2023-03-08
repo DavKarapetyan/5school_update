@@ -1,0 +1,108 @@
+﻿@using _5school.DAL.Enums;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebApplication1</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" style="color:#FCA311;" asp-area="" asp-controller="Home" asp-action="Index">Գլխավոր</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link underline" asp-area="" asp-controller="Teachers" asp-action="Index">@SharedLocalizer["nav1"]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link underline" asp-area="" asp-controller="SubStream" asp-action="Index">@SharedLocalizer["nav2"]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link underline" asp-area="" asp-controller="Article" asp-action="Index" asp-route-articleType="@ArticleType.News">@SharedLocalizer["nav3"]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link underline" asp-area="" asp-controller="Article" asp-action="Index" asp-route-articleType="@ArticleType.Statement">@SharedLocalizer["nav4"]</a>
+                        </li>
+                        <li class="nav-item">
+                            @await Html.PartialAsync("~/Views/Shared/_SelectLanguagePartial.cshtml")
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid" style="overflow-x:hidden;">
+        <main role="main" style="margin-bottom:150px;">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="waves">
+            <div class="wave" id="wave1"></div>
+            <div class="wave" id="wave2"></div>
+            <div class="wave" id="wave3"></div>
+            <div class="wave" id="wave4"></div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <ul class="social-icon">
+                        <li class="social-icon__item">
+                            <a class="social-icon__link" href="#">
+                                <ion-icon name="logo-facebook"></ion-icon>
+                            </a>
+                        </li>
+                        <li class="social-icon__item">
+                            <a class="social-icon__link" href="#">
+                                <ion-icon name="logo-instagram"></ion-icon>
+                            </a>
+                        </li>
+                        <li class="social-icon__item">
+                            <a class="social-icon__link" href="#">
+                                <ion-icon name="mail-outline"></ion-icon>
+                            </a>
+                        </li>
+                        <li class="social-icon__item">
+                            <a class="social-icon__link" href="#">
+                                <ion-icon name="call-outline"></ion-icon>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6 ">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3019.572132549746!2d44.47444361524492!3d40.815395179320774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4041bc2209486911%3A0xcbd8a006d61697b5!2z1LnVq9W-IDUg1aTVutaA1bjWgQ!5e0!3m2!1sru!2sam!4v1677586936497!5m2!1sru!2sam" width="400" height="275" style="border:0; width:100%; border-radius:35px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+        <p>&copy;2021 Nadine Coelho | All Rights Reserved</p>
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $('.single-item').slick({
+            autoplay: true,
+            autoplaySpeed: 2000,
+        });
+        AOS.init();
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
