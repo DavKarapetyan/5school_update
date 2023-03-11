@@ -43,13 +43,8 @@
             </div>
             <div class="row">
                 <div class="col-mb-3">
-                    <label asp-for="TeacherId" class="form-label">Teacher</label>
-                    <select asp-for="TeacherId" class="form-select">
-                        @foreach (var item in ViewBag.Teachers)
-                        {
-                            <option value="@item.Id">@item.FirstName @item.LastName</option>
-                        }
-                    </select>
+                    <label asp-for="Teacher" class="form-label">Teachers</label>
+                    <input class="form-control" asp-for="Teacher" placeholder="Enter Teachers" />
                 </div>
             </div>
             <div class="row">

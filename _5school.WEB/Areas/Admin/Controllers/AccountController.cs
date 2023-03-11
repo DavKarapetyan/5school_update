@@ -80,7 +80,7 @@ namespace _5school.WEB.Areas.Admin.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return Redirect("https://localhost:44349/");
+            return Redirect("https://localhost:7714/");
         }
 
         [AllowAnonymous]

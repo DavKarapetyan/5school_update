@@ -16,7 +16,7 @@ namespace _5school.BLL.ViewModels
         public string ImageFile { get; set; }
         public string StreamItem { get; set; }
         public string Classes { get; set; }
-        public int TeacherId { get; set; }
+        public string Teacher { get; set; }
         public int StreamId { get; set; }
         public CultureType Culture { get; set; }
     }

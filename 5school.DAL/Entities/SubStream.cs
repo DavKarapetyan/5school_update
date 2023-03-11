@@ -13,10 +13,8 @@ namespace _5school.DAL.Entities
         public string Name { get; set; }
         public string ImageFile { get; set; }
         public string StreamItem { get;set; }
+        public string Teacher { get; set; }
         public string Classes { get; set; }
-        [ForeignKey("TeacherId")]
-        public Teacher Teacher { get; set; }
-        public int TeacherId { get; set; }
         [ForeignKey("StreamId")]
         public Stream Stream { get; set; }
         public int StreamId { get; set; }

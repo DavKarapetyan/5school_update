@@ -32,7 +32,7 @@ namespace _5school.BLL.Services
                 Classes = model.Classes,
                 ImageFile = model.ImageFile,
                 StreamItem = model.StreamItem,
-                TeacherId = model.TeacherId
+                Teacher = model.Teacher,
             };
             _subStreamRepository.Add(subStream);
             _uow.Save();
@@ -58,6 +58,7 @@ namespace _5school.BLL.Services
                 Classes = subStream.Classes,
                 StreamItem = subStream.StreamItem,
                 ImageFile = subStream.ImageFile,
+                Teacher = subStream.Teacher,
             };
 
             return model;
@@ -76,9 +77,9 @@ namespace _5school.BLL.Services
                 Name = subStream.Name,
                 StreamId = subStream.StreamId,
                 Classes = subStream.Classes,
-                TeacherId = subStream.TeacherId,
                 StreamItem = subStream.StreamItem,
-                ImageFile = subStream.ImageFile
+                ImageFile = subStream.ImageFile,
+                Teacher = subStream.Teacher
             };
 
             return model;
@@ -96,9 +97,9 @@ namespace _5school.BLL.Services
                 Id = ss.Id,
                 Name = ss.Name,
                 Classes = ss.Classes,
-                Teacher = $"{ss.Classes}-{ss.Teacher.FirstName} {ss.Teacher.LastName}",
                 ImageFile = ss.ImageFile,
                 StreamItem = ss.StreamItem,
+                Teacher = ss.Teacher
             }).ToList();
             return list;
         }
@@ -112,8 +113,8 @@ namespace _5school.BLL.Services
                 entity.StreamId = model.StreamId;
                 entity.ImageFile = model.ImageFile;
                 entity.StreamItem = model.StreamItem;
-                entity.TeacherId = model.TeacherId;
                 entity.Classes = model.Classes;
+                entity.Teacher = model.Teacher;
                 _subStreamRepository.Update(entity);
             }
             else

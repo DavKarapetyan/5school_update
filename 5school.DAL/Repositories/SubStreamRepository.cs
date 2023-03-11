@@ -38,8 +38,7 @@ namespace _5school.DAL.Repositories
                 Classes = ss.Classes,
                 ImageFile = ss.ImageFile,
                 StreamItem = ss.StreamItem,
-                TeacherId = ss.TeacherId,
-                Teacher = ss.Teacher
+                Teacher = ss.Teacher,
             }).ToList();
             return data;
         }
@@ -65,9 +64,7 @@ namespace _5school.DAL.Repositories
             data.ImageFile = model.ImageFile;
             data.StreamItem = model.StreamItem;
             data.Classes = model.Classes;
-            data.TeacherId = model.TeacherId;
             data.Teacher = model.Teacher;
-
         }
     }
 }
