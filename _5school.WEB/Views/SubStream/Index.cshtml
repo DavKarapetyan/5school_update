@@ -1,6 +1,6 @@
 ﻿@using _5school.BLL.ViewModels;
 @model List<SubStreamVM>
-@foreach (var item in Model)
+@foreach (var item in Model.Where(a => !a.IsDeleted))
 {
     <h2 class="big-text">—— @item.Name ——</h2>
     <div class="container box" data-aos="fade-up" data-aos-duration="1500">

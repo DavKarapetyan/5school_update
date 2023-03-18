@@ -11,6 +11,7 @@ namespace _5school.BLL.ViewModels
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public bool IsDeleted { get; set; }
         public List<TeacherVM> Teachers { get; set; }
         public CultureType Culture { get; set; }
     }

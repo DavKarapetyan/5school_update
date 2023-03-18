@@ -30,6 +30,7 @@ namespace _5school.BLL.Services
             {
                 Name = model.Name,
                 FilePath= model.FilePath,
+                IsDeleted = false
             };
             _reportRepository.Add(report);
             _uow.Save();
@@ -53,6 +54,7 @@ namespace _5school.BLL.Services
                 Id = id,
                 Name = report.Name,
                 FilePath = report.FilePath,
+                IsDeleted = report.IsDeleted,
             };
 
             return model;
@@ -70,6 +72,7 @@ namespace _5school.BLL.Services
                 Id = g.Id,
                 Name = g.Name,
                 FilePath = g.FilePath,
+                IsDeleted = g.IsDeleted,
             }).ToList();
             return list;
         }
@@ -81,6 +84,7 @@ namespace _5school.BLL.Services
             {
                 entity.Name = model.Name;
                 entity.FilePath = model.FilePath;
+                entity.IsDeleted = false;
                 _reportRepository.Update(entity);
             }
             else

@@ -24,7 +24,8 @@ namespace _5school.DAL.Repositories
 
         public void Delete(int id)
         {
-            _context.Teachers.Remove(GetTeacherById(id));
+            var data = GetForEdit(id);
+            data.IsDeleted = true;
         }
 
         public List<Teacher> GetAll()
@@ -38,6 +39,7 @@ namespace _5school.DAL.Repositories
                 GroupId= t.GroupId,
                 ImagePath= t.ImagePath,
                 Position= t.Position,
+                IsDeleted= t.IsDeleted,
             }).AsNoTracking().ToList();
             return data;
         }
@@ -62,6 +64,7 @@ namespace _5school.DAL.Repositories
             data.LastName = model.LastName;
             data.GroupId = model.GroupId;
             data.Position = model.Position;
+            data.IsDeleted = model.IsDeleted;
         }
     }
 }

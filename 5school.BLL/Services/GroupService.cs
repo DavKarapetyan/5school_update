@@ -30,6 +30,7 @@ namespace _5school.BLL.Services
             DAL.Entities.Group group = new DAL.Entities.Group()
             { 
                 Name= model.Name,
+                IsDeleted = false,
             };
             _groupRepository.Add(group);
             _uow.Save();
@@ -52,6 +53,7 @@ namespace _5school.BLL.Services
             { 
                 Id = id,
                 Name = group.Name,
+                IsDeleted = group.IsDeleted,
                 Teachers = group.Teachers.Select(t => new TeacherVM() 
                 {
                     FirstName = t.FirstName,
@@ -59,7 +61,8 @@ namespace _5school.BLL.Services
                     Id = t.Id,
                     ImagePath = t.ImagePath,
                     LastName = t.LastName,
-                    Position = t.Position
+                    Position = t.Position,
+                    IsDeleted = t.IsDeleted,
                 }).ToList(),
             };
 
@@ -77,6 +80,7 @@ namespace _5school.BLL.Services
             {
                 Id = g.Id,
                 Name = g.Name,
+                IsDeleted = g.IsDeleted,
                 Teachers = g.Teachers.Select(t => new TeacherVM()
                 {
                     FirstName = t.FirstName,
@@ -85,6 +89,7 @@ namespace _5school.BLL.Services
                     ImagePath = t.ImagePath,
                     LastName = t.LastName,
                     Position = t.Position,
+                    IsDeleted = t.IsDeleted
                 }).ToList(),
             }).ToList();
             return list;
@@ -96,6 +101,7 @@ namespace _5school.BLL.Services
             if (cultureType == CultureType.am)
             {
                 entity.Name = model.Name;
+                entity.IsDeleted = false;
                 _groupRepository.Update(entity);
             }
             else

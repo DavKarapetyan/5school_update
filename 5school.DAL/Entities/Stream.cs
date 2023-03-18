@@ -11,6 +11,7 @@ namespace _5school.DAL.Entities
         public int Id { get; set; }
         public string Name { get; set; }    
         public string ImageFile { get; set; }
+        public bool IsDeleted { get; set; }
         public virtual ICollection<SubStream> SubStreams { get; set; }
     }
 }

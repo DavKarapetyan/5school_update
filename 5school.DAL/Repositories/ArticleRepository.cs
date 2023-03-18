@@ -23,7 +23,8 @@ namespace _5school.DAL.Repositories
 
         public void Delete(int id)
         {
-            _context.Articles.Remove(GetById(id));
+            var data = GetForEdit(id);
+            data.IsDeleted = true;
         }
 
         public List<Article> GetAll()
@@ -35,6 +36,7 @@ namespace _5school.DAL.Repositories
                 ArticleType = a.ArticleType,
                 ImageFile = a.ImageFile,
                 Title = a.Title,
+                IsDeleted = a.IsDeleted,
             }).ToList();
             return data;
         }
@@ -58,6 +60,7 @@ namespace _5school.DAL.Repositories
             data.Description = model.Description;
             data.ArticleType = model.ArticleType;
             data.ImageFile = model.ImageFile;
+            data.IsDeleted = model.IsDeleted;
         }
     }
 }

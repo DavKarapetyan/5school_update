@@ -2,16 +2,18 @@
 @using _5school.DAL.Enums;
 @model List<ArticleVM>
 
-<h2 class="big-text">— Նորություններ —</h2>
+<h2 class="big-text">— @ViewBag.Title —</h2>
 
 <div class="container">
     <div class="row">
-        @foreach(var item in Model)
+        @foreach (var item in Model.Where(a => !a.IsDeleted))
         {
             <div class="col-lg-4">
                 <div class="card" data-aos="fade-right" data-aos-duration="1500">
-                    <img src="@item.ImageFile" class="img-fluid article-card-img" />
-                    <h5 class="big-text">@item.Title</h5>
+                    <a class="text-decoration-none" asp-action="Main" asp-controller="Article" asp-route-id="@item.Id">
+                        <img src="@item.ImageFile" class="img-fluid article-card-img" />
+                        <h5 class="big-text">@item.Title</h5>
+                    </a>
                     <p class="article-text">
                         @(item.Description.Length > 100 ? item.Description.Remove(100) : item.Description + "...")
                     </p>

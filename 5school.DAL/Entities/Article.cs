@@ -13,6 +13,7 @@ namespace _5school.DAL.Entities
         public string Title { get; set; }
         public string Description { get; set; }
         public string ImageFile { get; set; }
+        public bool IsDeleted { get; set; }
         public ArticleType ArticleType { get; set; }
     }
 }

@@ -30,6 +30,7 @@ namespace _5school.BLL.Services
             {
                 Name = model.Name,
                 ImageFile = model.ImageFile,
+                IsDeleted = false,
             };
             _streamRepository.Add(stream);
             _uow.Save();
@@ -53,6 +54,7 @@ namespace _5school.BLL.Services
                 Id = id,
                 Name = stream.Name,
                 ImageFile = stream.ImageFile,
+                IsDeleted = stream.IsDeleted,
             };
 
             return model;
@@ -70,6 +72,7 @@ namespace _5school.BLL.Services
                 Id = g.Id,
                 Name = g.Name,
                 ImageFile = g.ImageFile,
+                IsDeleted = g.IsDeleted,
             }).ToList();
             return list;
         }
@@ -81,6 +84,7 @@ namespace _5school.BLL.Services
             {
                 entity.Name = model.Name;
                 entity.ImageFile = model.ImageFile;
+                entity.IsDeleted = false;
                 _streamRepository.Update(entity);
             }
             else

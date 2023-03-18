@@ -24,7 +24,8 @@ namespace _5school.DAL.Repositories
 
         public void Delete(int id)
         {
-            _context.Reports.Remove(GetReportById(id));
+            var data = GetForEdit(id);
+            data.IsDeleted = true;
         }
 
         public List<Report> GetAll()
@@ -34,6 +35,7 @@ namespace _5school.DAL.Repositories
                 Id = r.Id,
                 Name = r.Name,
                 FilePath = r.FilePath,
+                IsDeleted = r.IsDeleted,
             }).ToList();
             return data;
         }
@@ -55,6 +57,7 @@ namespace _5school.DAL.Repositories
             var data = _context.Reports.FirstOrDefault(r => r.Id == model.Id);
             data.Name = model.Name;
             data.FilePath = model.FilePath;
+            data.IsDeleted = model.IsDeleted;
         }
     }
 }

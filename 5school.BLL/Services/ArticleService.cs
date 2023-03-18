@@ -31,6 +31,7 @@ namespace _5school.BLL.Services
                 Description = model.Description,
                 ImageFile = model.ImageFile,
                 Title = model.Title,
+                IsDeleted = false,
             };
             _articleRepository.Add(article);
             _uow.Save();
@@ -56,6 +57,7 @@ namespace _5school.BLL.Services
                 Id = a.Id,
                 ImageFile = a.ImageFile,
                 Title = a.Title,
+                IsDeleted = a.IsDeleted,
             }).ToList();
             return list;
         }
@@ -73,6 +75,7 @@ namespace _5school.BLL.Services
                 Id = a.Id,
                 ImageFile = a.ImageFile,
                 Title = a.Title,
+                IsDeleted = a.IsDeleted,
             }).ToList();
             return list;
         }
@@ -91,6 +94,7 @@ namespace _5school.BLL.Services
                 Id = article.Id,
                 ImageFile = article.ImageFile,
                 Title = article.Title,
+                IsDeleted = article.IsDeleted,
             };
             return model;
         }
@@ -109,6 +113,7 @@ namespace _5school.BLL.Services
                 Id = article.Id,
                 ImageFile = article.ImageFile,
                 Title = article.Title,
+                IsDeleted = article.IsDeleted,
             };
             return model;
         }
@@ -122,6 +127,7 @@ namespace _5school.BLL.Services
                 entity.Description = model.Description;
                 entity.ImageFile = model.ImageFile;
                 entity.Title = model.Title;
+                entity.IsDeleted = false;
             }
             else
             {

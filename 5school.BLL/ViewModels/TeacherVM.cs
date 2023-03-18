@@ -14,6 +14,7 @@ namespace _5school.BLL.ViewModels
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string ImagePath { get; set; }
+        public bool IsDeleted { get; set; }
         public Position Position { get; set; }
         public string GroupName { get; set; }
     }

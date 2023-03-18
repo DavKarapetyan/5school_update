@@ -12,6 +12,7 @@ namespace _5school.BLL.ViewModels
         public int Id { get; set; }
         public string Name { get; set; }
         public string ImageFile { get; set; }
+        public bool IsDeleted { get; set; }
         public CultureType Culture { get; set; }
     }
 }

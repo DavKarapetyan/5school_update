@@ -33,6 +33,7 @@ namespace _5school.BLL.Services
                 LastName = model.LastName,
                 ImagePath= model.ImagePath,
                 Position = model.Position,
+                IsDeleted = false,
             };
             _teacherRepository.Add(subStream);
             _uow.Save();
@@ -58,7 +59,8 @@ namespace _5school.BLL.Services
                 ImagePath = teacher.ImagePath,
                 LastName = teacher.LastName,
                 Position = teacher.Position,
-                GroupName = teacher.Group.Name
+                GroupName = teacher.Group.Name,
+                IsDeleted = teacher.IsDeleted,
             };
 
             return model;
@@ -79,6 +81,7 @@ namespace _5school.BLL.Services
                 ImagePath = teacher.ImagePath,
                 LastName = teacher.LastName,
                 Position = teacher.Position,
+                IsDeleted = teacher.IsDeleted
             };
 
             return model;
@@ -98,7 +101,8 @@ namespace _5school.BLL.Services
                 Id = t.Id,
                 ImagePath = t.ImagePath,
                 Position = t.Position,
-                GroupName = t.Group.Name
+                GroupName = t.Group.Name,
+                IsDeleted = t.IsDeleted
             }).ToList();
             return list;
         }
@@ -113,6 +117,7 @@ namespace _5school.BLL.Services
                 entity.LastName = model.LastName;
                 entity.ImagePath = model.ImagePath;
                 entity.GroupId = model.GroupId;
+                entity.IsDeleted = model.IsDeleted;
             }
             else
             {

@@ -24,7 +24,8 @@ namespace _5school.DAL.Repositories
 
         public void Delete(int id)
         {
-            _context.SubStreams.Remove(GetSubStreamById(id));
+            var data = GetForEdit(id);
+            data.IsDeleted = true;
         }
 
         public List<SubStream> GetAll()
@@ -39,6 +40,7 @@ namespace _5school.DAL.Repositories
                 ImageFile = ss.ImageFile,
                 StreamItem = ss.StreamItem,
                 Teacher = ss.Teacher,
+                IsDeleted = ss.IsDeleted,
             }).ToList();
             return data;
         }
@@ -65,6 +67,7 @@ namespace _5school.DAL.Repositories
             data.StreamItem = model.StreamItem;
             data.Classes = model.Classes;
             data.Teacher = model.Teacher;
+            data.IsDeleted = model.IsDeleted;
         }
     }
 }

@@ -13,7 +13,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @foreach (var item in Model.Where(a => !a.IsDeleted))
             {
                 <tr role="row">
                     <td class="sorting_1">@item.Id</td>

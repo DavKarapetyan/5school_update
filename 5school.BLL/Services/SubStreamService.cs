@@ -33,6 +33,7 @@ namespace _5school.BLL.Services
                 ImageFile = model.ImageFile,
                 StreamItem = model.StreamItem,
                 Teacher = model.Teacher,
+                IsDeleted = false
             };
             _subStreamRepository.Add(subStream);
             _uow.Save();
@@ -59,6 +60,7 @@ namespace _5school.BLL.Services
                 StreamItem = subStream.StreamItem,
                 ImageFile = subStream.ImageFile,
                 Teacher = subStream.Teacher,
+                IsDeleted = subStream.IsDeleted
             };
 
             return model;
@@ -79,7 +81,8 @@ namespace _5school.BLL.Services
                 Classes = subStream.Classes,
                 StreamItem = subStream.StreamItem,
                 ImageFile = subStream.ImageFile,
-                Teacher = subStream.Teacher
+                Teacher = subStream.Teacher,
+                IsDeleted = subStream.IsDeleted
             };
 
             return model;
@@ -99,7 +102,8 @@ namespace _5school.BLL.Services
                 Classes = ss.Classes,
                 ImageFile = ss.ImageFile,
                 StreamItem = ss.StreamItem,
-                Teacher = ss.Teacher
+                Teacher = ss.Teacher,
+                IsDeleted = ss.IsDeleted
             }).ToList();
             return list;
         }
@@ -107,7 +111,7 @@ namespace _5school.BLL.Services
         public void Update(SubStreamAddEditVM model, CultureType cultureType)
         {
             var entity = _subStreamRepository.GetForEdit(model.Id);
-            if (cultureType == CultureType.en)
+            if (cultureType == CultureType.am)
             {
                 entity.Name = model.Name;
                 entity.StreamId = model.StreamId;
@@ -115,6 +119,7 @@ namespace _5school.BLL.Services
                 entity.StreamItem = model.StreamItem;
                 entity.Classes = model.Classes;
                 entity.Teacher = model.Teacher;
+                entity.IsDeleted = false;
                 _subStreamRepository.Update(entity);
             }
             else
