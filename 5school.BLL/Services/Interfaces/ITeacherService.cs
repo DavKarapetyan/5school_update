@@ -10,6 +10,7 @@ namespace _5school.BLL.Services.Interfaces
 {
     public interface ITeacherService
     {
+        public List<TeacherVM> GetTeachersByGroupId(int groupId, CultureType cultureType);
         public List<TeacherVM> GetTeachers(CultureType cultureType);
         public TeacherVM GetTeacherById(int id, CultureType cultureType);
         public TeacherAddEditVM GetTeacherForEdit(int id, CultureType cultureType);

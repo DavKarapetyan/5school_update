@@ -21,5 +21,7 @@ namespace _5school.DAL
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Translate> Translates { get; set; }
         public DbSet<Article> Articles { get; set; }
+        public DbSet<Page> Pages { get; set; }
+        public DbSet<Section> Sections { get; set; }
     }
 }

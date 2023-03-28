@@ -9,6 +9,7 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Report Type</th>
                 <th>File</th>
                 <th>Actions</th>
             </tr>
@@ -19,6 +20,7 @@
                 <tr role="row">
                     <td class="sorting_1">@item.Id</td>
                     <td>@item.Name</td>
+                    <td>@item.ReportType</td>
                     <td>@item.FilePath</td>
                     <td>
                         <a asp-action="Delete" asp-controller="Report" asp-route-id="@item.Id" class="btn btn-danger modal-open" style="color:white;">

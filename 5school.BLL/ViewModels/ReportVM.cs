@@ -13,6 +13,7 @@ namespace _5school.BLL.ViewModels
         public string Name { get; set; }
         public string FilePath { get; set; }
         public bool IsDeleted { get; set; }
+        public ReportType ReportType { get; set; }
         public CultureType Culture { get; set; }
     }
 }

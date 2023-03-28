@@ -36,10 +36,8 @@ namespace _5school.DAL.Repositories
                 Name = ss.Name,
                 Stream = ss.Stream,
                 StreamId = ss.StreamId,
-                Classes = ss.Classes,
                 ImageFile = ss.ImageFile,
                 StreamItem = ss.StreamItem,
-                Teacher = ss.Teacher,
                 IsDeleted = ss.IsDeleted,
             }).ToList();
             return data;
@@ -65,8 +63,6 @@ namespace _5school.DAL.Repositories
             data.StreamId = model.StreamId;
             data.ImageFile = model.ImageFile;
             data.StreamItem = model.StreamItem;
-            data.Classes = model.Classes;
-            data.Teacher = model.Teacher;
             data.IsDeleted = model.IsDeleted;
         }
     }

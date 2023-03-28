@@ -17,11 +17,13 @@ namespace _5school.BLL.Services
     {
         private readonly IGroupRepository _groupRepository;
         private readonly ITranslateService _translateService;
+        private readonly ITeacherService _teacherService;
         private readonly IUnitOfWork _uow;
-        public GroupService(IGroupRepository groupRepository, ITranslateService translateService, IUnitOfWork uow)
+        public GroupService(IGroupRepository groupRepository, ITranslateService translateService, ITeacherService teacherService,IUnitOfWork uow)
         {
             _groupRepository = groupRepository;
             _translateService = translateService;
+            _teacherService = teacherService;
             _uow = uow;
         }
 
@@ -54,16 +56,7 @@ namespace _5school.BLL.Services
                 Id = id,
                 Name = group.Name,
                 IsDeleted = group.IsDeleted,
-                Teachers = group.Teachers.Select(t => new TeacherVM() 
-                {
-                    FirstName = t.FirstName,
-                    GroupName = t.Group.Name,
-                    Id = t.Id,
-                    ImagePath = t.ImagePath,
-                    LastName = t.LastName,
-                    Position = t.Position,
-                    IsDeleted = t.IsDeleted,
-                }).ToList(),
+                Teachers = _teacherService.GetTeachersByGroupId(id, cultureType)
             };
 
             return model;
@@ -76,21 +69,12 @@ namespace _5school.BLL.Services
             {
                 groups = _translateService.Convert(groups, "Groups", 0, cultureType, groups.Select(g => g.Id).ToList()) as List<DAL.Entities.Group>;
             }
-            var list = groups.Select(g => new GroupVM 
+            var list = groups.Select(g => new GroupVM
             {
                 Id = g.Id,
                 Name = g.Name,
                 IsDeleted = g.IsDeleted,
-                Teachers = g.Teachers.Select(t => new TeacherVM()
-                {
-                    FirstName = t.FirstName,
-                    GroupName = t.Group.Name,
-                    Id = t.Id,
-                    ImagePath = t.ImagePath,
-                    LastName = t.LastName,
-                    Position = t.Position,
-                    IsDeleted = t.IsDeleted
-                }).ToList(),
+                Teachers = _teacherService.GetTeachersByGroupId(g.Id, cultureType)
             }).ToList();
             return list;
         }

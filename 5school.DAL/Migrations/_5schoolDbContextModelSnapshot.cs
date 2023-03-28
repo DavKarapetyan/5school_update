@@ -206,6 +206,26 @@ namespace _5school.DAL.Migrations
                     b.ToTable("Groups");
                 });
 
+            modelBuilder.Entity("_5school.DAL.Entities.Page", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Pages");
+                });
+
             modelBuilder.Entity("_5school.DAL.Entities.Report", b =>
                 {
                     b.Property<int>("Id")
@@ -225,9 +245,43 @@ namespace _5school.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ReportType")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Reports");
+                });
+
+            modelBuilder.Entity("_5school.DAL.Entities.Section", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ImageFile")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("PageId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PageId");
+
+                    b.ToTable("Sections");
                 });
 
             modelBuilder.Entity("_5school.DAL.Entities.Stream", b =>
@@ -262,10 +316,6 @@ namespace _5school.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Classes")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ImageFile")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -281,10 +331,6 @@ namespace _5school.DAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("StreamItem")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Teacher")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -484,6 +530,17 @@ namespace _5school.DAL.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("_5school.DAL.Entities.Section", b =>
+                {
+                    b.HasOne("_5school.DAL.Entities.Page", "Page")
+                        .WithMany("Sections")
+                        .HasForeignKey("PageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Page");
+                });
+
             modelBuilder.Entity("_5school.DAL.Entities.SubStream", b =>
                 {
                     b.HasOne("_5school.DAL.Entities.Stream", "Stream")
@@ -509,6 +566,11 @@ namespace _5school.DAL.Migrations
             modelBuilder.Entity("_5school.DAL.Entities.Group", b =>
                 {
                     b.Navigation("Teachers");
+                });
+
+            modelBuilder.Entity("_5school.DAL.Entities.Page", b =>
+                {
+                    b.Navigation("Sections");
                 });
 
             modelBuilder.Entity("_5school.DAL.Entities.Stream", b =>

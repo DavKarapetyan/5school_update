@@ -10,7 +10,7 @@ namespace _5school.WEB.Areas.Admin.Controllers
         private readonly ITeacherService _teacherService;
         private readonly IGroupService _groupService;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public TeacherController(ITeacherService teacherService, IGroupService groupService,IWebHostEnvironment webHostEnvironment)
+        public TeacherController(ITeacherService teacherService, IGroupService groupService, IWebHostEnvironment webHostEnvironment)
         {
             _teacherService = teacherService;
             _groupService = groupService;
@@ -35,10 +35,21 @@ namespace _5school.WEB.Areas.Admin.Controllers
         public async Task<IActionResult> AddEdit(TeacherAddEditVM model, IFormFile formFile)
         {
             if (formFile != null)
-            { 
+            {
                 string path = "/Files/" + formFile.FileName;
                 using (var fileStream = new FileStream(_webHostEnvironment.WebRootPath + path, FileMode.Create)) { await formFile.CopyToAsync(fileStream); }
                 model.ImagePath = path;
+                if (model.Id == 0)
+                {
+                    _teacherService.Add(model);
+                }
+                else
+                {
+                    _teacherService.Update(model, model.Culture);
+                }
+            }
+            else if (formFile == null && model.ImagePath != null)
+            {
                 if (model.Id == 0)
                 {
                     _teacherService.Add(model);
@@ -53,12 +64,12 @@ namespace _5school.WEB.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete() 
+        public IActionResult Delete()
         {
             return PartialView();
         }
         [HttpPost]
-        public IActionResult Delete(int id) 
+        public IActionResult Delete(int id)
         {
             _teacherService.Delete(id);
             return RedirectToAction("Index");

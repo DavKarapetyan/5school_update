@@ -14,8 +14,6 @@ namespace _5school.BLL.ViewModels
         public string Name { get; set; }
         public string ImageFile { get; set; }
         public string StreamItem { get; set; }
-        public string Classes { get; set; }
-        public string Teacher { get; set; }
         public bool IsDeleted { get; set; }
     }
 }

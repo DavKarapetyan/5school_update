@@ -36,6 +36,7 @@ namespace _5school.DAL.Repositories
                 Name = r.Name,
                 FilePath = r.FilePath,
                 IsDeleted = r.IsDeleted,
+                ReportType = r.ReportType
             }).ToList();
             return data;
         }
@@ -58,6 +59,7 @@ namespace _5school.DAL.Repositories
             data.Name = model.Name;
             data.FilePath = model.FilePath;
             data.IsDeleted = model.IsDeleted;
+            data.ReportType = model.ReportType;
         }
     }
 }

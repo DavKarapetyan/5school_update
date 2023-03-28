@@ -24,10 +24,13 @@
         <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
             @foreach (var item in cultureItems)
             {
-                <li><button class="dropdown-item" value="@item.Value" onclick="this.form.submit();" name="culture">@item.Value.ToString()</button></li>
+                <li><button class="dropdown-item" value="@item.Value" onclick="this.form.submit();" name="culture"><span class="flag-icon flag-icon-@(item.Value == "en" ? "us" : item.Value)"></span>  @item.Value.ToUpper()</button></li>
             }
         </ul>
     </div>
 </form>
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css" rel="stylesheet" />

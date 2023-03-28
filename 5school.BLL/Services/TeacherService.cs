@@ -106,6 +106,25 @@ namespace _5school.BLL.Services
             }).ToList();
             return list;
         }
+        public List<TeacherVM> GetTeachersByGroupId(int groupId, CultureType cultureType)
+        {
+            var teachers = _teacherRepository.GetAll().Where(t => t.GroupId == groupId).ToList();
+            if (cultureType != CultureType.am) 
+            {
+                teachers = _translateService.Convert(teachers, "Teachers", 0, cultureType, teachers.Select(g => g.Id).ToList()) as List<Teacher>;
+            }
+            var list = teachers.Select(t => new TeacherVM
+            {
+                FirstName = t.FirstName,
+                LastName = t.LastName,
+                Id = t.Id,
+                ImagePath = t.ImagePath,
+                Position = t.Position,
+                GroupName = t.Group.Name,
+                IsDeleted = t.IsDeleted
+            }).ToList();
+            return list;
+        }
 
         public void Update(TeacherAddEditVM model, CultureType cultureType)
         {

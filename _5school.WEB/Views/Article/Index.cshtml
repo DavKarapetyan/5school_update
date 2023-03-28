@@ -14,9 +14,6 @@
                         <img src="@item.ImageFile" class="img-fluid article-card-img" />
                         <h5 class="big-text">@item.Title</h5>
                     </a>
-                    <p class="article-text">
-                        @(item.Description.Length > 100 ? item.Description.Remove(100) : item.Description + "...")
-                    </p>
                     <a class="button text-decoration-none" asp-action="Main" asp-controller="Article" asp-route-id="@item.Id">Ավելին</a>
                 </div>
             </div>

@@ -29,10 +29,8 @@ namespace _5school.BLL.Services
             { 
                 Name = model.Name,
                 StreamId = model.StreamId,
-                Classes = model.Classes,
                 ImageFile = model.ImageFile,
                 StreamItem = model.StreamItem,
-                Teacher = model.Teacher,
                 IsDeleted = false
             };
             _subStreamRepository.Add(subStream);
@@ -56,10 +54,8 @@ namespace _5school.BLL.Services
             {
                 Id = id,
                 Name = subStream.Name,
-                Classes = subStream.Classes,
                 StreamItem = subStream.StreamItem,
                 ImageFile = subStream.ImageFile,
-                Teacher = subStream.Teacher,
                 IsDeleted = subStream.IsDeleted
             };
 
@@ -78,10 +74,8 @@ namespace _5school.BLL.Services
                 Id = id,
                 Name = subStream.Name,
                 StreamId = subStream.StreamId,
-                Classes = subStream.Classes,
                 StreamItem = subStream.StreamItem,
                 ImageFile = subStream.ImageFile,
-                Teacher = subStream.Teacher,
                 IsDeleted = subStream.IsDeleted
             };
 
@@ -99,10 +93,8 @@ namespace _5school.BLL.Services
             {
                 Id = ss.Id,
                 Name = ss.Name,
-                Classes = ss.Classes,
                 ImageFile = ss.ImageFile,
                 StreamItem = ss.StreamItem,
-                Teacher = ss.Teacher,
                 IsDeleted = ss.IsDeleted
             }).ToList();
             return list;
@@ -117,8 +109,6 @@ namespace _5school.BLL.Services
                 entity.StreamId = model.StreamId;
                 entity.ImageFile = model.ImageFile;
                 entity.StreamItem = model.StreamItem;
-                entity.Classes = model.Classes;
-                entity.Teacher = model.Teacher;
                 entity.IsDeleted = false;
                 _subStreamRepository.Update(entity);
             }

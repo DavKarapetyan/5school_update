@@ -1,9 +1,28 @@
 ﻿@using _5school.BLL.ViewModels;
+@using _5school.DAL.Enums;
 @model List<ReportVM>
 
-@foreach (var item in Model.Where(a => !a.IsDeleted))
-{
-    <div>
-        <a class="big-text text-decoration-none" href="@item.FilePath">@item.Name</a>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <h3 class="big-text">- Արձանագրություններ - </h3>
+                
+                @foreach(var item in Model.Where(r => r.ReportType == ReportType.Record))
+                {
+                    <a href="@item.FilePath" class="big-text text-decoration-none">@item.Name</a>
+                }
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <h3 class="big-text">- Հայտարարություններ - </h3>
+
+                @foreach (var item in Model.Where(r => r.ReportType == ReportType.Report))
+                {
+                    <a href="@item.FilePath" class="big-text text-decoration-none">@item.Name</a>
+                }
+            </div>
+        </div>
     </div>
-}
+</div>

@@ -37,6 +37,7 @@ builder.Services.AddScoped<IArticleService, ArticleService>();
 builder.Services.AddIdentity<User, IdentityRole<int>>().AddEntityFrameworkStores<_5schoolDbContext>();
 builder.Services.AddScoped<ITeacherService, TeacherService>();
 builder.Services.AddScoped<ITranslateService, TranslateService>();
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
     var suportedCultures = new[]
