@@ -49,6 +49,7 @@ namespace _5school.DAL.Repositories
         {
             var data = _context.Pages.FirstOrDefault(p => p.Id == model.Id);
             data.Title = model.Title;
+            data.IsDeleted = model.IsDeleted;
         }
     }
 }
