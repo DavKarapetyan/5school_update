@@ -10,7 +10,8 @@ namespace _5school.DAL.Entities
     {
         public int Id { get; set; }
         public string Title { get; set; }
+        public string? Text { get; set; }
+        public string? ImageFile { get; set; }
         public bool IsDeleted { get; set; }
-        public ICollection<Section> Sections { get; set; }
     }
 }

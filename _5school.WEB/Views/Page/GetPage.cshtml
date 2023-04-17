@@ -1,0 +1,17 @@
+﻿@using _5school.BLL.ViewModels;
+@model PageVM
+
+<h1 class="big-text">— @Model.Title —</h1>
+
+<div class="container box">
+    <div class="row">
+        <div class="col-lg-6">
+            <img src="@Model.ImageFile" class="img-fluid"/>
+        </div>
+        <div class="col-lg-6">
+            <p>
+                @Model.Text
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+﻿@using _5school.BLL.ViewModels;
+@model List<PageVM>
+@{
+    Layout = "";
+}
+
+<div class="dropdown">
+    <a class="nav-link dropdown-toggle" style="font-size:18.4px;" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Այլ
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+        @foreach (var item in Model)
+        {
+            <li><a class="dropdown-item" asp-action="GetPage" asp-controller="Page" asp-route-id="@item.Id">@item.Title</a></li>
+        }
+    </ul>
+</div>

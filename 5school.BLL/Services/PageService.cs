@@ -16,15 +16,13 @@ namespace _5school.BLL.Services
     public class PageService : IPageService
     {
         private readonly IPageRepository _pageRepository;
-        private readonly ISectionService _sectionService;
         private readonly IUnitOfWork _uow;
         private readonly ITranslateService _translateService;
 
-        public PageService(IPageRepository pageRepository, IUnitOfWork uow, ISectionService sectionService, ITranslateService translateService)
+        public PageService(IPageRepository pageRepository, IUnitOfWork uow, ITranslateService translateService)
         {
             _pageRepository = pageRepository;
             _uow = uow;
-            _sectionService = sectionService;
             _translateService = translateService;
 
         }
@@ -34,6 +32,8 @@ namespace _5school.BLL.Services
             {
                 IsDeleted = false,
                 Title = model.Title,
+                ImageFile = model.ImageFile,
+                Text = model.Text,
             };
             _pageRepository.Add(data);
             _uow.Save();
@@ -57,6 +57,8 @@ namespace _5school.BLL.Services
                 Id = g.Id,
                 IsDeleted = g.IsDeleted,
                 Title = g.Title,
+                Text = g.Text,
+                ImageFile = g.ImageFile
             }).ToList();
             return list;
         }
@@ -73,7 +75,8 @@ namespace _5school.BLL.Services
                 Id = id,
                 IsDeleted = page.IsDeleted,
                 Title = page.Title,
-                Sections = _sectionService.GetSectionsByPageId(id, cultureType)
+                Text = page.Text,
+                ImageFile = page.ImageFile
             };
             return pageVM;
         }
@@ -90,7 +93,8 @@ namespace _5school.BLL.Services
                 Id = id,
                 IsDeleted = page.IsDeleted,
                 Title = page.Title,
-                Sections = _sectionService.GetSectionsByPageId(id, cultureType)
+                Text = page.Text,
+                ImageFile = page.ImageFile
             };
             return pageVM;
         }
@@ -102,6 +106,8 @@ namespace _5school.BLL.Services
             {
                 entity.Title = model.Title;
                 entity.IsDeleted = false;
+                entity.Text = model.Text;
+                entity.ImageFile = model.ImageFile;
                 _pageRepository.Update(entity);
             }
             else

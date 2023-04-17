@@ -28,6 +28,7 @@ builder.Services.AddScoped<ISubStreamRepository, SubStreamRepository>();
 builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
 builder.Services.AddScoped<ITranslateRepository, TranslateRepository>();
 builder.Services.AddScoped<IArticleRepository, ArticleRepository>();
+builder.Services.AddScoped<IPageRepository, PageRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IGroupService, GroupService>();
 builder.Services.AddScoped<IReportService, ReportService>();
@@ -36,6 +37,7 @@ builder.Services.AddScoped<ISubStreamService, SubStreamService>();
 builder.Services.AddScoped<IArticleService, ArticleService>();
 builder.Services.AddIdentity<User, IdentityRole<int>>().AddEntityFrameworkStores<_5schoolDbContext>();
 builder.Services.AddScoped<ITeacherService, TeacherService>();
+builder.Services.AddScoped<IPageService, PageService>();
 builder.Services.AddScoped<ITranslateService, TranslateService>();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.Configure<RequestLocalizationOptions>(options =>
