@@ -2,7 +2,7 @@
 
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 
-<form method="post" asp-action="Register" asp-controller="Account">
+<form method="post" asp-action="Login" asp-controller="Account">
     <div class="container mt-3">
         <div asp-validation-summary="ModelOnly"></div>
         <div class="mb-3">
@@ -20,6 +20,7 @@
             <input asp-for="RememberMe" type="checkbox" class="form-check-input" />
         </div>
         <input type="submit" value="Submit" class="btn btn-success w-100" />
+        <a class="btn btn-primary w-100 mt-3" asp-action="Register" asp-controller="Account">Register</a>
     </div>
 </form>
 

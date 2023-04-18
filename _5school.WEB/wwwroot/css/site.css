@@ -268,3 +268,13 @@
     border-radius: 35px;
     padding: 35px;
 }
+
+
+.substream-text {
+    margin-top:98px;
+}
+@media only screen and (max-width: 600px) {
+    .substream-text {
+        margin-top:0;
+    }
+}

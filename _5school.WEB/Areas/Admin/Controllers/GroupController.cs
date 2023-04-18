@@ -1,10 +1,13 @@
 ﻿using _5school.BLL.Services.Interfaces;
 using _5school.BLL.ViewModels;
 using _5school.DAL.Enums;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace _5school.WEB.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "admin")]
     [Area("Admin")]
     public class GroupController : Controller
     {

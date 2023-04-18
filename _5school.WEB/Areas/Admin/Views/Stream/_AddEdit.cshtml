@@ -1,6 +1,6 @@
 ﻿@using _5school.BLL.ViewModels;
 @using _5school.DAL.Entities;
-@model SubStreamAddEditVM
+@model StreamVM
 @{
     var actionText = Model.Id == 0 ? "Add" : "Edit";
 }
@@ -9,19 +9,13 @@
         <h5 class="modal-title" id="exampleModalLabel1">@actionText</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
-    <form method="post" asp-action="AddEdit" asp-controller="SubStream" enctype="multipart/form-data">
+    <form method="post" asp-action="AddEdit" asp-controller="Stream" enctype="multipart/form-data">
         <input type="hidden" asp-for="Id" />
         <div class="modal-body">
             <div class="row">
                 <div class="col mb-3">
                     <label asp-for="Name" class="form-label">Title</label>
                     <input type="text" class="form-control" placeholder="Enter title" asp-for="Name">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col mb-3">
-                    <label asp-for="StreamItem" class="form-label">StreamItem</label>
-                    <input type="text" class="form-control" placeholder="Enter Stream Item" asp-for="StreamItem">
                 </div>
             </div>
             <div class="row">
@@ -33,17 +27,6 @@
                         <img src="@Model.ImageFile" class="img-fluid w-25 mt-3 rounded-lg" />
                         <input asp-for="ImageFile" />
                     }
-                </div>
-            </div>
-            <div class="row">
-                <div class="col mb-3">
-                    <label asp-for="StreamId" class="form-label">Stream</label>
-                    <select asp-for="StreamId" class="form-select">
-                        @foreach (var item in ViewBag.Streams)
-                        {
-                            <option value="@item.Id">@item.Name</option>
-                        }
-                    </select>
                 </div>
             </div>
             <input asp-for="Culture" hidden />

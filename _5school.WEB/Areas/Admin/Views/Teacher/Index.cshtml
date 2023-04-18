@@ -24,7 +24,7 @@
                     <td>@item.FirstName</td>
                     <td>@item.LastName</td>
                     <td>@item.GroupName</td>
-                    <td>@item.ImagePath</td>
+                    <td><img src="@item.ImagePath" class="img-fluid" style="width:50px;" /></td>
                     <td>@item.Position</td>
                     <td>
                         <a asp-action="Delete" asp-controller="Teacher" asp-route-id="@item.Id" class="btn btn-danger modal-open" style="color:white;">

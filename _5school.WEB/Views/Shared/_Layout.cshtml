@@ -44,6 +44,30 @@
                         <li class="nav-item">
                             @await Html.PartialAsync("~/Views/Shared/_SelectLanguagePartial.cshtml")
                         </li>
+                        <li class="nav-item">
+                            @if (User.IsInRole("admin"))
+                            {
+                                <div class="dropdown">
+                                    <a class="nav-link dropdown-toggle" style="font-size:18.4px;" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        @SharedLocalizer["nav8"]
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                        <form method="post" asp-controller="Account" asp-action="Logout" asp-area="Admin">
+                                        <li>
+                                            <button type="submit" class="dropdown-item">
+                                                <span class="mx-3">Admin Page</span>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button type="submit" class="dropdown-item">
+                                                <span class="mx-3">Log Out</span>
+                                            </button>
+                                        </li>
+                                        </form>
+                                    </ul>
+                                </div>
+                            }
+                        </li>
                     </ul>
                 </div>
             </div>

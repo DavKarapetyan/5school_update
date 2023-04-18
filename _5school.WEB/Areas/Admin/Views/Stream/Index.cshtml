@@ -1,16 +1,16 @@
-﻿@model List<PageVM>
+﻿@model List<StreamVM>
 @{
     Layout = "~/Areas/Admin/Views/_AdminLayout.cshtml";
 }
 <div class="content container-fluid">
-    <a class="btn btn-success modal-open" asp-action="AddEdit" asp-controller="Page">Add</a>
+    <a class="btn btn-success modal-open" asp-action="AddEdit" asp-controller="Stream">Addd</a>
     <table class="table border-0 star-student table-hover table-center mb-0 datatable table-striped dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
         <thead class="student-thread">
             <tr>
                 <th>ID</th>
-                <th>Title</th>
-                <th>Text</th>
-                <th>Image File</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -18,11 +18,10 @@
             {
                 <tr role="row">
                     <td class="sorting_1">@item.Id</td>
-                    <td>@item.Title</td>
-                    <td>@item.Text</td>
                     <td><img src="@item.ImageFile" class="img-fluid" style="width:50px;" /></td>
+                    <td>@item.Name</td>
                     <td>
-                        <a asp-action="Delete" asp-controller="Page" asp-route-id="@item.Id" class="btn btn-danger modal-open" style="color:white;">
+                        <a asp-action="Delete" asp-controller="Stream" asp-route-id="@item.Id" class="btn btn-danger modal-open" style="color:white;">
                             <i class="feather-x-square"></i>
                             Delete
                         </a>

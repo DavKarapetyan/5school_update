@@ -4,9 +4,12 @@ using _5school.BLL.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace _5school.WEB.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "admin")]
     [Area("Admin")]
     public class SubStreamController : Controller
     {
@@ -44,6 +47,17 @@ namespace _5school.WEB.Areas.Admin.Controllers
                 string path = "/Files/" + formFile.FileName;
                 using (var fileStream = new FileStream(_webHostEnvironment.WebRootPath + path, FileMode.Create)) { await formFile.CopyToAsync(fileStream); }
                 model.ImageFile = path;
+                if (model.Id == 0)
+                {
+                    _subStreamService.Add(model);
+                }
+                else
+                {
+                    _subStreamService.Update(model, model.Culture);
+                }
+            }
+            else if (formFile == null && model.ImageFile != null)
+            {
                 if (model.Id == 0)
                 {
                     _subStreamService.Add(model);

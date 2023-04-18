@@ -36,7 +36,7 @@ namespace _5school.WEB.Areas.Admin.Controllers
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, false);
-                    return RedirectToAction("Index", "Home");
+                    return Redirect("/Home/Index");
                 }
                 else
                 {
@@ -74,54 +74,12 @@ namespace _5school.WEB.Areas.Admin.Controllers
             return View(model);
         }
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
-        {
+        { 
             await _signInManager.SignOutAsync();
-            return Redirect("https://localhost:7714/");
-        }
-
-        [AllowAnonymous]
-        public IActionResult GoogleLogin()
-        {
-            string redirectUrl = Url.Action("GoogleResponse", "Account");
-            var properties = _signInManager.ConfigureExternalAuthenticationProperties("Google", redirectUrl);
-            return new ChallengeResult("Google", properties);
-        }
-
-        [AllowAnonymous]
-        public async Task<IActionResult> GoogleResponse()
-        {
-            ExternalLoginInfo info = await _signInManager.GetExternalLoginInfoAsync();
-            if (info == null)
-                return RedirectToAction(nameof(Login));
-
-            var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, false);
-            string[] userInfo = { info.Principal.FindFirst(ClaimTypes.Name).Value, info.Principal.FindFirst(ClaimTypes.Email).Value };
-            if (result.Succeeded)
-                return View(userInfo);
-            else
-            {
-                User user = new User
-                {
-                    Email = info.Principal.FindFirst(ClaimTypes.Email).Value,
-                    UserName = info.Principal.FindFirst(ClaimTypes.Email).Value
-                };
-
-                IdentityResult identResult = await _userManager.CreateAsync(user);
-                if (identResult.Succeeded)
-                {
-                    identResult = await _userManager.AddLoginAsync(user, info);
-                    if (identResult.Succeeded)
-                    {
-                        await _signInManager.SignInAsync(user, false);
-                        return View(userInfo);
-                    }
-                }
-                return RedirectToAction("Index", "Home");
-            }
+            return Redirect("/Home/Index");
         }
     }
 }

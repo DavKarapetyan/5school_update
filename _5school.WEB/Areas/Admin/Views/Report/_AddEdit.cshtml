@@ -28,12 +28,12 @@
             </div>
             <div class="row">
                 <div class="col mb-3">
-                    <label asp-for="FilePath" class="form-label">ImageFile</label>
+                    <label asp-for="FilePath" class="form-label">Image File</label>
                     <input type="file" class="form-control" placeholder="Enter Image" name="formFile">
                     @if (Model.FilePath != null)
                     {
                         <img src="@Model.FilePath" class="img-fluid w-25 mt-3 rounded-lg" />
-                        <input hidden asp-for="FilePath" />
+                        <input asp-for="FilePath" />
                     }
                 </div>
             </div>

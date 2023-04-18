@@ -1,10 +1,14 @@
-﻿using _5school.BLL.Services.Interfaces;
+﻿using _5school.BLL.Services;
+using _5school.BLL.Services.Interfaces;
 using _5school.BLL.ViewModels;
 using _5school.DAL.Enums;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace _5school.WEB.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "admin")]
     [Area("Admin")]
     public class ReportController : Controller
     {
@@ -33,10 +37,21 @@ namespace _5school.WEB.Areas.Admin.Controllers
         public async Task<IActionResult> AddEdit(ReportVM model, IFormFile formFile)
         {
             if (formFile != null)
-            { 
+            {
                 string path = "/Files/" + formFile.FileName;
                 using (var fileStream = new FileStream(_webHostEnvironment.WebRootPath + path, FileMode.Create)) { await formFile.CopyToAsync(fileStream); }
                 model.FilePath = path;
+                if (model.Id == 0)
+                {
+                    _reportService.Add(model);
+                }
+                else
+                {
+                    _reportService.Update(model, model.Culture);
+                }
+            }
+            else if (formFile == null && model.FilePath != null)
+            {
                 if (model.Id == 0)
                 {
                     _reportService.Add(model);

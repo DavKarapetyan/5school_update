@@ -49,7 +49,7 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
                     new CultureInfo("en")
                 };
 
-    options.DefaultRequestCulture = new RequestCulture("en");
+    options.DefaultRequestCulture = new RequestCulture("am");
     options.SupportedCultures = suportedCultures;
     options.SupportedUICultures = suportedCultures;
 });

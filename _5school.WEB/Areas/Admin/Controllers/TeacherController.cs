@@ -2,8 +2,12 @@
 using _5school.DAL.Enums;
 using Microsoft.AspNetCore.Mvc;
 using _5school.BLL.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
+
 namespace _5school.WEB.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "admin")]
     [Area("Admin")]
     public class TeacherController : Controller
     {
