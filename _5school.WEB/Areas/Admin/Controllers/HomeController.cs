@@ -12,8 +12,5 @@ namespace _5school.WEB.Areas.Admin.Controllers
         {
             return View();
         }
-        public IActionResult Error() {
-            return View();
-        }
     }
 }

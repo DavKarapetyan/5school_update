@@ -41,9 +41,20 @@ namespace _5school.WEB.Controllers
                 CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
                 new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
             );
-
+            returnUrl = returnUrl.Replace(CurrentCulture.ToString(), culture);
             return LocalRedirect(returnUrl);
         }
+        public ActionResult RedirectToDefaultLanguage()
+        {
+            var lang = CurrentCulture.ToString();
+            if (lang == "am")
+            {
+                return RedirectToAction("Error", "Home");
+            }
+            return RedirectToAction("Index", new { lang = lang});
+        }
+
+
         public IActionResult Privacy()
         {
             return View();

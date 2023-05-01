@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
+using Microsoft.AspNetCore.Localization.Routing;
+using _5school.WEB;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,19 +55,31 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
     options.DefaultRequestCulture = new RequestCulture("am");
     options.SupportedCultures = suportedCultures;
     options.SupportedUICultures = suportedCultures;
+    var provider = new RouteDataRequestCultureProvider();
+    provider.RouteDataStringKey = "lang";
+    provider.UIRouteDataStringKey = "lang";
+    provider.Options = options;
+    options.RequestCultureProviders = new[] { provider };
 });
-
+builder.Services.Configure<RouteOptions>(options =>
+{
+    options.ConstraintMap.Add("lang", typeof(LanguageRouteConstraint));
+});
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+else
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+    app.UseStatusCodePagesWithReExecute("/Home/Error/{0}");
 }
-app.UseDeveloperExceptionPage();
+
 app.UseRequestLocalization();
 app.UseStaticFiles();
 app.UseRouting();
@@ -72,11 +87,18 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseAuthorization();
 
+var options = app.Services.GetService<IOptions<RequestLocalizationOptions>>();
+app.UseRequestLocalization(options.Value);
+
 app.MapControllerRoute(
     name: "Admin",
     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 app.MapControllerRoute(
+    name: "LocalizedDefault",
+    pattern: "{lang:lang}/{controller=Home}/{action=Index}/{id?}");
+app.MapControllerRoute(
     name: "default",
-    pattern: "/{controller=Home}/{action=Index}/{id?}");
+    pattern: "{*catchall}",
+    defaults: new { controller = "Home", action = "RedirectToDefaultLanguage" });
 
 app.Run();
