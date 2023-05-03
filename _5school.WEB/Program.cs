@@ -90,6 +90,18 @@ app.UseAuthorization();
 var options = app.Services.GetService<IOptions<RequestLocalizationOptions>>();
 app.UseRequestLocalization(options.Value);
 
+app.Use(async (ctx, next) => { 
+    await next();
+
+    if (ctx.Response.StatusCode == 500 && !ctx.Response.HasStarted)
+    {
+        string originalPath = ctx.Request.Path.Value;
+        ctx.Items["originalPath"] = originalPath;
+        ctx.Request.Path = "/Home/Error";
+        await next();
+    }
+});
+
 app.MapControllerRoute(
     name: "Admin",
     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");

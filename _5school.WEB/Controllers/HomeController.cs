@@ -49,9 +49,10 @@ namespace _5school.WEB.Controllers
             var lang = CurrentCulture.ToString();
             if (lang == "am")
             {
-                return RedirectToAction("Error", "Home");
+                lang = "en";
+                return RedirectToAction("Error");
             }
-            return RedirectToAction("Index", new { lang = lang});
+            return RedirectToAction("Index", new { lang = lang });
         }
 
 
@@ -60,10 +61,15 @@ namespace _5school.WEB.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        [Route("500")]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            string originalPath = "unknown";
+            if (HttpContext.Items.ContainsKey("originalPath"))
+            { 
+                originalPath = HttpContext.Items["originalPath"] as string;
+            }
+            return View();
         }
     }
 }
