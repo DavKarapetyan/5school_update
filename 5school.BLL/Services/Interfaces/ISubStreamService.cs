@@ -11,6 +11,7 @@ namespace _5school.BLL.Services.Interfaces
     public interface ISubStreamService
     {
         public List<SubStreamVM> GetSubStreams(CultureType cultureType);
+        public List<SubStreamVM> GetSubStreamsByStreamId(int streamId, CultureType cultureType);
         public SubStreamVM GetSubStreamById(int id, CultureType cultureType);
         public SubStreamAddEditVM GetSubStreamForEdit(int id, CultureType cultureType);
         public void Add(SubStreamAddEditVM model);

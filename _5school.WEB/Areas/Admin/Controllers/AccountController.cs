@@ -73,6 +73,11 @@ namespace _5school.WEB.Areas.Admin.Controllers
             }
             return View(model);
         }
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]

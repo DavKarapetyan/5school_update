@@ -100,7 +100,25 @@ namespace _5school.BLL.Services
             return list;
         }
 
-        public void Update(SubStreamAddEditVM model, CultureType cultureType)
+		public List<SubStreamVM> GetSubStreamsByStreamId(int streamId, CultureType cultureType)
+		{
+            var subStreams = _subStreamRepository.GetAll().Where(ss => ss.StreamId == streamId);
+            if (cultureType != CultureType.am)
+            {
+                subStreams = _translateService.Convert(subStreams, "SubStreams", 0, cultureType, subStreams.Select(g => g.Id).ToList()) as List<SubStream>;
+            }
+            var list = subStreams.Select(ss => new SubStreamVM 
+            {
+				Id = ss.Id,
+				Name = ss.Name,
+				ImageFile = ss.ImageFile,
+				StreamItem = ss.StreamItem,
+				IsDeleted = ss.IsDeleted
+			}).ToList();
+            return list;
+		}
+
+		public void Update(SubStreamAddEditVM model, CultureType cultureType)
         {
             var entity = _subStreamRepository.GetForEdit(model.Id);
             if (cultureType == CultureType.am)

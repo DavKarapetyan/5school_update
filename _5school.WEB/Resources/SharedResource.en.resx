@@ -177,4 +177,10 @@ Music. Gyulnara Derdzyan's &lt;/br&gt;</value>
   <data name="text4" xml:space="preserve">
     <value>More</value>
   </data>
+  <data name="text5" xml:space="preserve">
+    <value>Protocol</value>
+  </data>
+  <data name="text6" xml:space="preserve">
+    <value>Report</value>
+  </data>
 </root>

@@ -9,7 +9,7 @@
         @SharedLocalizer["nav7"]
     </a>
     <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-        @foreach (var item in Model)
+        @foreach (var item in Model.Where(p => !p.IsDeleted))
         {
             <li><a class="dropdown-item" asp-action="GetPage" asp-controller="Page" asp-route-id="@item.Id">@item.Title</a></li>
         }

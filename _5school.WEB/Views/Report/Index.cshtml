@@ -6,9 +6,9 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="card">
-                <h3 class="big-text">- Արձանագրություններ - </h3>
+                <h3 class="big-text">- @SharedLocalizer["text5"] - </h3>
                 
-                @foreach(var item in Model.Where(r => r.ReportType == ReportType.Record))
+                @foreach(var item in Model.Where(r => r.ReportType == ReportType.Record && !r.IsDeleted))
                 {
                     <a href="@item.FilePath" class="big-text text-decoration-none">@item.Name</a>
                 }
@@ -16,9 +16,9 @@
         </div>
         <div class="col-lg-6">
             <div class="card">
-                <h3 class="big-text">- Հայտարարություններ - </h3>
+                <h3 class="big-text">- @SharedLocalizer["text6"] - </h3>
 
-                @foreach (var item in Model.Where(r => r.ReportType == ReportType.Report))
+                @foreach (var item in Model.Where(r => r.ReportType == ReportType.Report && !r.IsDeleted))
                 {
                     <a href="@item.FilePath" class="big-text text-decoration-none">@item.Name</a>
                 }

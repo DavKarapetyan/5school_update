@@ -11,6 +11,7 @@
                 <th>Title</th>
                 <th>Text</th>
                 <th>Image File</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -19,8 +20,17 @@
                 <tr role="row">
                     <td class="sorting_1">@item.Id</td>
                     <td>@item.Title</td>
-                    <td>@item.Text</td>
-                    <td><img src="@item.ImageFile" class="img-fluid" style="width:50px;" /></td>
+                    <td>@(item.Text.Length > 100 ? item.Text.Remove(100) : item.Text)...</td>
+                    <td>
+                        @if (item.ImageFile != null)
+                        {
+                            <img src="@item.ImageFile" class="img-fluid" style="width:50px;" />
+                        }
+                        else
+                        {
+                            <p>No Image</p>
+                        }
+                    </td>
                     <td>
                         <a asp-action="Delete" asp-controller="Page" asp-route-id="@item.Id" class="btn btn-danger modal-open" style="color:white;">
                             <i class="feather-x-square"></i>
@@ -38,6 +48,7 @@
                             </div>
                         </div>
                     </td>
+
                 </tr>
             }
         </tbody>

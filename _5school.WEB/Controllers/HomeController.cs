@@ -47,12 +47,11 @@ namespace _5school.WEB.Controllers
         public ActionResult RedirectToDefaultLanguage()
         {
             var lang = CurrentCulture.ToString();
-            if (lang == "am")
+            if (lang == "en")
             {
-                lang = "en";
-                return RedirectToAction("Error");
+                lang = "am";
             }
-            return RedirectToAction("Index", new { lang = lang });
+            return RedirectToAction("Index", new { lang = lang});
         }
 
 

@@ -177,4 +177,10 @@
   <data name="text4" xml:space="preserve">
     <value>Больше</value>
   </data>
+  <data name="text5" xml:space="preserve">
+    <value>Протокол</value>
+  </data>
+  <data name="text6" xml:space="preserve">
+    <value>Отчет</value>
+  </data>
 </root>

@@ -177,4 +177,10 @@
   <data name="text4" xml:space="preserve">
     <value>Ավելին</value>
   </data>
+  <data name="text5" xml:space="preserve">
+    <value>Արձանագրություն</value>
+  </data>
+  <data name="text6" xml:space="preserve">
+    <value>Հաշվետվություն</value>
+  </data>
 </root>

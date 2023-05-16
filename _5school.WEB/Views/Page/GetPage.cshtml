@@ -6,19 +6,11 @@
 <div class="container box">
     @if (Model.ImageFile != null)
     {
-        <div class="row">
-            <div class="col-lg-6">
-                <img src="@Model.ImageFile" class="img-fluid" />
-            </div>
-            <div class="col-lg-6">
-                <p>
-                    @Model.Text
-                </p>
-            </div>
-        </div>
+        <img src="@Model.ImageFile" class="img-fluid p-2" style="float:left; height:auto;" />
+        <p class="article-main-text p-2">@Model.Text</p>
     }
     else
     {
-        <p>@Model.Text</p>    
+        <p class="article-main-text">@Model.Text</p>
     }
 </div>

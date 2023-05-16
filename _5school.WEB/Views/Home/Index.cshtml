@@ -38,7 +38,7 @@
                 <div class="card">
                     <img src="@item.ImageFile" class="img-fluid card-img" />
                     <h3 class="big-text">@item.Name</h3>
-                    <a class="button text-decoration-none" asp-action="Index" asp-controller="SubStream">@SharedLocalizer["text4"]</a>
+                    <a class="button text-decoration-none" asp-action="Index" asp-route-streamId="@item.Id" asp-controller="SubStream">@SharedLocalizer["text4"]</a>
                 </div>
             </div>
         }

@@ -14,14 +14,14 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-lg navbar-toggleable-lg navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" style="color:#FCA311;" asp-area="" asp-controller="Home" asp-action="Index">Գլխավոր</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="navbar-collapse collapse d-lg-inline-flex justify-content-between">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link underline" asp-area="" asp-controller="Teachers" asp-action="Index">@SharedLocalizer["nav1"]</a>
@@ -45,27 +45,47 @@
                             @await Html.PartialAsync("~/Views/Shared/_SelectLanguagePartial.cshtml")
                         </li>
                         <li class="nav-item">
-                            @if (User.IsInRole("admin"))
+                            @if (User.Identity.IsAuthenticated)
                             {
-                                <div class="dropdown">
-                                    <a class="nav-link dropdown-toggle" style="font-size:18.4px;" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        @SharedLocalizer["nav8"]
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                                        <form method="post" asp-controller="Account" asp-action="Logout" asp-area="Admin">
-                                        <li>
-                                            <button type="submit" class="dropdown-item">
-                                                <span class="mx-3">Admin Page</span>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button type="submit" class="dropdown-item">
-                                                <span class="mx-3">Log Out</span>
-                                            </button>
-                                        </li>
-                                        </form>
-                                    </ul>
-                                </div>
+                                @if (User.IsInRole("admin"))
+                                {
+                                    <div class="dropdown">
+                                        <a class="nav-link dropdown-toggle" style="font-size:18.4px;" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            @SharedLocalizer["nav8"]
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                            <form method="post" asp-controller="Account" asp-action="Logout" asp-area="Admin">
+                                            <li>
+                                                <a asp-action="Index" asp-controller="Home" asp-area="Admin" type="submit" class="dropdown-item">
+                                                    <span class="mx-3">Admin Page</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <button type="submit" class="dropdown-item">
+                                                    <span class="mx-3">Log Out</span>
+                                                </button>
+                                            </li>
+                                            </form>
+                                        </ul>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="dropdown">
+                                        <a class="nav-link dropdown-toggle" style="font-size:18.4px;" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            @SharedLocalizer["nav8"]
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                            <form method="post" asp-controller="Account" asp-action="Logout" asp-area="Admin">
+                                            <li>
+                                                <button type="submit" class="dropdown-item">
+                                                    <span class="mx-3">Log Out</span>
+                                                </button>
+                                            </li>
+                                            </form>
+                                        </ul>
+                                    </div>
+                                }
                             }
                         </li>
                     </ul>
@@ -89,25 +109,29 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <ul class="social-icon">
+                    <ul class="">
                         <li class="social-icon__item">
                             <a class="social-icon__link" href="https://www.facebook.com/vanadzorschoolhamarhing.teryan">
                                 <ion-icon name="logo-facebook"></ion-icon>
+                                <span>Facebook</span>
                             </a>
                         </li>
                         <li class="social-icon__item">
                             <a class="social-icon__link" href="https://www.instagram.com/5high.school/">
                                 <ion-icon name="logo-instagram"></ion-icon>
+                                <span>Instagram</span>
                             </a>
                         </li>
                         <li class="social-icon__item">
                             <a class="social-icon__link" href="mailto:vanadzor5@schools.am">
                                 <ion-icon name="mail-outline"></ion-icon>
+                                <span>vanadzor5@schools.am</span>
                             </a>
                         </li>
                         <li class="social-icon__item">
                             <a class="social-icon__link" href="tel:0322434304">
                                 <ion-icon name="call-outline"></ion-icon>
+                                <span>0322434304</span>
                             </a>
                         </li>
                     </ul>

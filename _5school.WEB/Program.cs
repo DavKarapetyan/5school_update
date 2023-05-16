@@ -11,6 +11,7 @@ using System.Globalization;
 using Microsoft.AspNetCore.Localization.Routing;
 using _5school.WEB;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,6 +44,11 @@ builder.Services.AddScoped<ITeacherService, TeacherService>();
 builder.Services.AddScoped<IPageService, PageService>();
 builder.Services.AddScoped<ITranslateService, TranslateService>();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Admin/Account/Login";
+    options.AccessDeniedPath = "/Admin/Account/AccessDenied";
+});
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
     var suportedCultures = new[]
@@ -65,7 +71,9 @@ builder.Services.Configure<RouteOptions>(options =>
 {
     options.ConstraintMap.Add("lang", typeof(LanguageRouteConstraint));
 });
+
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
 
 var app = builder.Build();
 

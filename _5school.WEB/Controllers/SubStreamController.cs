@@ -1,4 +1,5 @@
 ﻿using _5school.BLL.Services.Interfaces;
+using _5school.BLL.ViewModels;
 using _5school.DAL.Enums;
 using _5school.WEB.Controllers;
 using Microsoft.AspNetCore.Mvc;
@@ -12,9 +13,17 @@ namespace _5school.WEB.Controllers
         {
             _subStreamService = subStreamService;
         }
-        public IActionResult Index()
+        public IActionResult Index(int? streamId)
         {
-            var data = _subStreamService.GetSubStreams(CurrentCulture);
+            var data = new List<SubStreamVM>();
+            if (streamId != null)
+            {
+                data = _subStreamService.GetSubStreamsByStreamId(streamId.Value, CurrentCulture);
+            }
+            else
+            {
+                data = _subStreamService.GetSubStreams(CurrentCulture);
+            }
             return View(data);
         }
     }
